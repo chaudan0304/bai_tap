@@ -19,6 +19,17 @@ def print_student_list():
     for student in student_list:
         print(f"Họ tên: {student['ho_ten']}, Năm sinh: {student['nam_sinh']}, Địa chỉ: {student['dia_chi']}")
     
+def search_student(search_name):
+    """Tìm kiếm sinh viên theo họ tên."""
+    found_students = [student for student in student_list if search_name.lower() in student['ho_ten'].lower()]
+    
+    if not found_students:
+        print(f"Không tìm thấy sinh viên với tên '{search_name}'.")
+        return
+    
+    for student in found_students:
+        print(f"Tìm thấy: Họ tên: {student['ho_ten']}, Năm sinh: {student['nam_sinh']}, Địa chỉ: {student['dia_chi']}")
+        
 if __name__ == "__main__":
     print("--- CHUONG TRINH QUAN LY SINH VIEN ---")
     # Yêu cầu 1: Thêm sinh viên
@@ -30,3 +41,10 @@ if __name__ == "__main__":
     # Yêu cầu 2: In danh sách
     print("\n2. In danh sach sinh vien:")
     print_student_list()
+    
+    # Yêu cầu 3: Tìm kiếm
+    print("\n3. Tim kiem sinh vien theo ten 'an':")
+    search_student("an")
+    
+    print("\nTim kiem sinh vien theo ten 'Dung':")
+    search_student("Dung")
